@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@mixin rwd($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #414350;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 900px;
+    height: 80vh;
+    margin: 0 auto;
+    background-color: #909296;
+}
+
+.container_img {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffcb05;
+}
+
+img {
+    overflow: hidden;
+    background-size: cover;  
+}
+
+.container_menu {
+    background-color: #ffffff;
+}
+
+.menu {
+    max-width: 900px;
+    height: 33px;
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    &__item {
+        list-style: none;
+        display: flex;
+
+        font-size: 11px;
+        gap: 10px;
+    }
+
+    &__item li::after {
+        content: '·';
+        margin-left: 10px;
+    }
+
+    &__item li:nth-child(11)::after {
+        content: '';
+        margin-left: 10px;
+    }
+
+    &__item a:hover {
+        text-decoration: underline;
+    }
+
+    &__link {
+        color: #000;
+        text-decoration: none;
+    }
+
+    @include rwd(991px) {
+        
+        height: 100%;
+        margin: 2rem 0;
+        
+        &__item {
+        flex-direction: column;
+        }
+
+        &__item li::after {
+            content: '';
+        }
+
+        &__item li::before {
+            content: '·';
+            margin-right: 10px;
+        }
+    }
+
+}
